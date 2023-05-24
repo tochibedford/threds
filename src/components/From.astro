@@ -1,0 +1,49 @@
+---
+import Button from "./Button.astro";
+---
+
+<form action="" class:list={["formContainer"]}>
+  <label for=""
+    >Name
+    <input type="text" />
+  </label>
+  <label for="">
+    Email
+    <input type="email" />
+  </label>
+
+  <div class="buttonContainer">
+    <Button text="Join wait list" type="submit" />
+  </div>
+</form>
+
+<style lang="scss">
+  form {
+    font-size: 0.8125em;
+    display: grid;
+    // padding: 0.5em;
+
+
+    label {
+      color: var(--off-white);
+      display: grid;
+      padding-bottom: 2.25em;
+      input {
+        max-width: 30.25em;
+        width: 50vw;
+        padding-inline: 2em;
+        background-color: inherit;
+        border: 1px solid var(--off-white-highlight);
+        padding-block: 1em;
+        border-radius: 1em;
+        background-color: var(--primary-color-highlight);
+      }
+    }
+
+    .buttonContainer {
+        width: 100%;
+        display: grid;
+        place-content: center;
+    }
+  }
+</style>
