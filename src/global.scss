@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+/* resets */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  background-color: inherit;
+  border: none;
+}
+
+/* variables */
+
+:root {
+  --primary-color: #22475c;
+  --off-white: #e7e7e7;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  height: 100dvh;
+}
+
+main {
+  max-width: 1440px;
+  margin: auto;
+}
+
+button {
+  background-color: var(--backgroundColor);
+  color: var(--primary-color);
+  padding: 5px 30px;
+  min-height: 48px;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  transition: all 200ms;
+  font-weight: 275;
+  background-color: var(--off-white);
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.2em;
+    padding: 3px 20px;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 0.9em;
+    padding: 0.2em 1em;
+  }
+}
