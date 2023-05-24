@@ -2,6 +2,8 @@
 import "../global.scss";
 import Button from "../components/Button.astro";
 import Navbar from "../components/Navbar.astro";
+import Form from "../components/From.astro";
+const state = "open";
 ---
 
 <html lang="en">
@@ -27,17 +29,48 @@ import Navbar from "../components/Navbar.astro";
             <img src="/assets/thredsLogo.png" alt="threds logo" />
           </div>
         </h1>
-        <p class="animateIn">
+
+        <div class:list={["formContainer", "animateIn"]}>
+          <Form />
+        </div>
+
+        <p class:list={["animateIn", "heroText"]}>
           Unlock Your Wardrobe's Full Potential with AI Magic!
         </p>
-        <div class:list={["joinWaitListContainer", "animateIn"]}>
-          <Button class="hey" invert={false} text="Join wait list" />
-        </div>
+        <btn-container class:list={["joinWaitListContainer", "animateIn"]}>
+          <Button invert={false} text="Join wait list" />
+        </btn-container>
       </section>
     </main>
   </body>
 
   <script>
+    const form = document.querySelector<HTMLDivElement>(".formContainer");
+    const heroText = document.querySelector<HTMLDivElement>(".heroText");
+    const logoContainer =
+      document.querySelector<HTMLDivElement>(".logoContainer");
+
+    console.log(form);
+    class Button extends HTMLElement {
+      //define new Class Button
+      constructor() {
+        super();
+        const joinButton = this.querySelector("button");
+        joinButton &&
+          joinButton.addEventListener("click", () => {
+            console.log("clicked");
+            if (form && joinButton && heroText && logoContainer) {
+              form.style.display = "block";
+              joinButton.style.display = "none";
+              heroText.style.display = "none";
+              logoContainer.style.width = "50vw";
+              logoContainer.style.maxWidth = "484px";
+            }
+          });
+      }
+    }
+    customElements.define("btn-container", Button);
+
     const toAnimate =
       document.body.querySelectorAll<HTMLDivElement>(".animateIn");
     let elementCount = 0;
@@ -74,6 +107,7 @@ import Navbar from "../components/Navbar.astro";
           h1 {
             position: relative;
             overflow: hidden;
+
             .altText {
               position: absolute;
               opacity: 0;
@@ -90,7 +124,6 @@ import Navbar from "../components/Navbar.astro";
               }
             }
           }
-
           p {
             width: 60%;
             text-align: center;
@@ -124,6 +157,9 @@ import Navbar from "../components/Navbar.astro";
             @media screen and (max-width: 768px) {
               margin: 3em;
             }
+          }
+          .formContainer {
+            display: none;
           }
         }
       }
