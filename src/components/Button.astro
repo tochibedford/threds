@@ -1,26 +1,21 @@
 ---
 const { text, invert } = Astro.props;
-const backgroundColor = "var(--off-white)";
-
 ---
 
-<button>
+<button class:list={[{ invert: invert }]}>
   {text}
 </button>
 
-<style define:vars={{ backgroundColor }}>
-  button {
-    background-color: var(--backgroundColor);
-    color: var(--primary-color);
-    padding: 5px 30px;
-    height: 48px;
-    border-radius: 50px;
-    font-size: 25px;
-    transition: all 200ms;
-    font-weight: 275;
-  }
+<style lang="scss">
+  .invert {
+    background-color: transparent;
+    border: 1px solid var(--off-white);
+    color: var(--off-white);
 
-  button:hover {
-    scale: 1.1;
+    @media screen and (max-width: 400px) {
+      font-size: 1em;
+      padding: 1em 2em;
+      min-height: unset;
+    }
   }
 </style>
