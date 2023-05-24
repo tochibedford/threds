@@ -1,0 +1,26 @@
+---
+const { text, invert } = Astro.props;
+const backgroundColor = "var(--off-white)";
+
+---
+
+<button>
+  {text}
+</button>
+
+<style define:vars={{ backgroundColor }}>
+  button {
+    background-color: var(--backgroundColor);
+    color: var(--primary-color);
+    padding: 5px 30px;
+    height: 48px;
+    border-radius: 50px;
+    font-size: 25px;
+    transition: all 200ms;
+    font-weight: 275;
+  }
+
+  button:hover {
+    scale: 1.1;
+  }
+</style>
