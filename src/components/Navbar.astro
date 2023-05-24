@@ -1,0 +1,27 @@
+---
+import Button from "./Button.astro";
+---
+
+<nav>
+  <div class:list={["learnMoreContainer", "animateIn"]}>
+    <Button invert={true} text={"Learn more"} />
+  </div>
+</nav>
+
+<style lang="scss">
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2em 3em;
+    font-size: 0.6em;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    .learnMoreContainer {
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.5s;
+    }
+  }
+</style>
