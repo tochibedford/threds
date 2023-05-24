@@ -1,6 +1,7 @@
 ---
-import "../global.css";
+import "../global.scss";
 import Button from "../components/Button.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <html lang="en">
@@ -9,26 +10,123 @@ import Button from "../components/Button.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
     <title>Astro</title>
   </head>
   <body>
+    <Navbar />
     <main>
-      <nav>
-        <!-- add learn more -->
-      </nav>
       <section>
         <h1>
-          <img src="/assets/thredsLogo.png" />
+          <div class="altText">threds</div>
+          <div class:list={["logoContainer", "animateIn"]}>
+            <img src="/assets/thredsLogo.png" alt="threds logo" />
+          </div>
         </h1>
-        <p>Unlock Your Wardrobe's Full Potential with AI Magic!</p>
-        <Button invert={false} text="Join wait list" />
+        <p class="animateIn">
+          Unlock Your Wardrobe's Full Potential with AI Magic!
+        </p>
+        <div class:list={["joinWaitListContainer", "animateIn"]}>
+          <Button class="hey" invert={false} text="Join wait list" />
+        </div>
       </section>
     </main>
   </body>
+
+  <script>
+    const toAnimate =
+      document.body.querySelectorAll<HTMLDivElement>(".animateIn");
+    let elementCount = 0;
+
+    for (const element of toAnimate) {
+      if (element) {
+        element.style.transitionDelay = `${200 * elementCount}ms`;
+        element.style.transform = "translateY(0)";
+        element.style.opacity = "1";
+      }
+      elementCount++;
+    }
+  </script>
+
+  <style lang="scss">
+    body {
+      display: flex;
+      flex-direction: column;
+
+      main {
+        flex-grow: 1;
+        section {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          gap: 1em;
+
+          @media screen and (max-width: 768px) {
+            gap: 0.3em;
+          }
+
+          h1 {
+            position: relative;
+            overflow: hidden;
+            .altText {
+              position: absolute;
+              opacity: 0;
+            }
+
+            .logoContainer {
+              padding: 0.5em;
+              transform: translateY(-100%);
+              transition: all 0.5s;
+              opacity: 0;
+              img {
+                width: 100%;
+                object-fit: contain;
+              }
+            }
+          }
+
+          p {
+            width: 60%;
+            text-align: center;
+            font-weight: 200;
+            font-size: 1.7em;
+            color: var(--off-white);
+            transition: all 0.5s;
+            transform: translateY(-100%);
+            opacity: 0;
+
+            @media screen and (max-width: 768px) {
+              font-size: 1.4em;
+            }
+            @media screen and (max-width: 640px) {
+              font-size: 1.2em;
+              width: 60%;
+            }
+
+            @media screen and (max-width: 400px) {
+              font-size: 1.1em;
+              width: 80%;
+            }
+          }
+
+          .joinWaitListContainer {
+            margin: 2em;
+            transition: all 0.5s;
+            transform: translateY(-100%);
+            opacity: 0;
+
+            @media screen and (max-width: 768px) {
+              margin: 3em;
+            }
+          }
+        }
+      }
+    }
+  </style>
 </html>
-
-<style>
-  section {
-
-  }
-</style>
