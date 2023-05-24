@@ -40,16 +40,17 @@ import Navbar from "../components/Navbar.astro";
   <script>
     const toAnimate =
       document.body.querySelectorAll<HTMLDivElement>(".animateIn");
-    let elementCount = 0;
-
-    for (const element of toAnimate) {
-      if (element) {
-        element.style.transitionDelay = `${200 * elementCount}ms`;
-        element.style.transform = "translateY(0)";
-        element.style.opacity = "1";
+    setTimeout(() => {
+      let elementCount = 0;
+      for (const element of toAnimate) {
+        if (element) {
+          element.style.transitionDelay = `${200 * elementCount}ms`;
+          element.style.transform = "translateY(0)";
+          element.style.opacity = "1";
+        }
+        elementCount++;
       }
-      elementCount++;
-    }
+    }, 0);
   </script>
 
   <style lang="scss">
