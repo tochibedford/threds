@@ -2,7 +2,7 @@
 import "../global.scss";
 import Button from "../components/Button.astro";
 import Navbar from "../components/Navbar.astro";
-import Form from "../components/From.astro";
+import Form from "../components/Form.astro";
 const state = "open";
 ---
 
@@ -50,21 +50,28 @@ const state = "open";
     const logoContainer =
       document.querySelector<HTMLDivElement>(".logoContainer");
 
-    console.log(form);
     class Button extends HTMLElement {
       //define new Class Button
       constructor() {
         super();
-        const joinButton = this.querySelector("button");
+        const joinButton = this.querySelector<HTMLButtonElement>("button");
+        const joinButtonParent = joinButton?.parentElement;
         joinButton &&
           joinButton.addEventListener("click", () => {
-            console.log("clicked");
-            if (form && joinButton && heroText && logoContainer) {
-              form.style.display = "block";
-              joinButton.style.display = "none";
-              heroText.style.display = "none";
-              logoContainer.style.width = "60vw";
-              logoContainer.style.maxWidth = "484px";
+            if (
+              form &&
+              joinButton &&
+              joinButtonParent &&
+              heroText &&
+              logoContainer
+            ) {
+              joinButtonParent.style.transitionDelay = "0s";
+              heroText.style.transitionDelay = "0s";
+              joinButtonParent.classList.add("hide");
+              heroText.classList.add("hide");
+
+              form.classList.add("show");
+              logoContainer.style.width = "80%";
             }
           });
       }
@@ -118,6 +125,8 @@ const state = "open";
               padding: 0.5em;
               transform: translateY(-100%);
               transition: all 0.5s;
+              width: 100%;
+              margin: 0 auto;
               opacity: 0;
               img {
                 width: 100%;
@@ -132,8 +141,17 @@ const state = "open";
             font-size: 1.7em;
             color: var(--off-white);
             transition: all 0.5s;
+
             transform: translateY(-100%);
             opacity: 0;
+            overflow: hidden;
+            max-height: 200px;
+
+            &.hide {
+              transition-delay: 0;
+              max-height: 0;
+              opacity: 0;
+            }
 
             @media screen and (max-width: 768px) {
               font-size: 1.4em;
@@ -153,14 +171,27 @@ const state = "open";
             margin: 2em;
             transition: all 0.5s;
             transform: translateY(-100%);
+            overflow: hidden;
             opacity: 0;
+            max-height: 200px;
+            &.hide {
+              transition-delay: 0;
+              max-height: 0;
+              opacity: 0;
+            }
 
             @media screen and (max-width: 768px) {
               margin: 3em;
             }
           }
           .formContainer {
-            display: none;
+            max-height: 0;
+            transition: all 0.5s;
+            overflow: hidden;
+
+            &.show {
+              max-height: 300px;
+            }
           }
         }
       }
