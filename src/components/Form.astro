@@ -2,14 +2,18 @@
 import Button from "./Button.astro";
 ---
 
-<form action="" class:list={["formContainer"]}>
-  <label for=""
+<form
+  action="https://submit-form.com/QiIkcUhz"
+  target="_blank"
+  class:list={["formContainer"]}
+>
+  <label for="name"
     >Name
-    <input type="text" />
+    <input type="text" id="name" name="name" placeholder="Name" required />
   </label>
-  <label for="">
+  <label for="email">
     Email
-    <input type="email" />
+    <input type="email" id="email" name="email" placeholder="Email" required />
   </label>
 
   <div class="buttonContainer">
@@ -22,7 +26,6 @@ import Button from "./Button.astro";
     font-size: 0.8125em;
     display: grid;
     // padding: 0.5em;
-
 
     label {
       color: var(--off-white);
@@ -41,9 +44,9 @@ import Button from "./Button.astro";
     }
 
     .buttonContainer {
-        width: 100%;
-        display: grid;
-        place-content: center;
+      width: 100%;
+      display: grid;
+      place-content: center;
     }
   }
 </style>
