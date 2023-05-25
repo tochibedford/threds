@@ -25,7 +25,6 @@ import Button from "./Button.astro";
   form {
     font-size: 0.8125em;
     display: grid;
-    // padding: 0.5em;
 
     label {
       color: var(--off-white);
@@ -40,6 +39,9 @@ import Button from "./Button.astro";
         padding-block: 1em;
         border-radius: 1em;
         background-color: var(--primary-color-highlight);
+        &:focus{
+          outline: none
+        }
       }
     }
 
