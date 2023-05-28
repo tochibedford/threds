@@ -1,0 +1,21 @@
+---
+const { text, invert } = Astro.props;
+---
+
+<button class:list={[{ invert: invert }]}>
+  {text}
+</button>
+
+<style lang="scss">
+  .invert {
+    background-color: transparent;
+    border: 1px solid var(--off-white);
+    color: var(--off-white);
+
+    @media screen and (max-width: 400px) {
+      font-size: 1em;
+      padding: 1em 2em;
+      min-height: unset;
+    }
+  }
+</style>
