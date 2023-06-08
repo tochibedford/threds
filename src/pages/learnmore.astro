@@ -1,0 +1,56 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout>
+    <Navbar />
+    <section>
+        <div class:list={["logoContainer", "animateIn"]}>
+            <img src="/assets/thredsLogo.png" alt="threds logo" />
+        </div>
+        <p>
+            Welcome to ThredsAI, the innovative online platform that empowers
+            you to reimagine your wardrobe like never before. With our
+            cutting-edge AI technology, you can breathe new life into your
+            existing clothing items and unlock endless outfit possibilities. Are
+            you ready to revolutionize your style effortlessly? Let's dive in!
+        </p>
+    </section>
+</Layout>
+
+<style lang="scss">
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;s
+        height: 100%;
+        gap: 1em;
+        scroll-behavior: smooth;
+        color: var(--off-white);
+
+        .logoContainer {
+            margin-top: 4.25em;
+            width: 32em;
+            height: 10em;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            gap: 0.3em;
+        }
+
+        p {
+            margin-top: 0.5em;
+            width: 40%;
+            height: 288px;
+            text-align: center;
+            font-weight: 275;
+            line-height: 38px;
+        }
+    }
+</style>
