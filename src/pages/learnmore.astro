@@ -17,9 +17,25 @@ import Layout from "../layouts/layout.astro";
             you ready to revolutionize your style effortlessly? Let's dive in!
         </p>
     </section>
+    <section></section>
 </Layout>
 
 <style lang="scss">
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        padding: 2em 3em;
+        font-size: 0.6em;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+
+        .learnMoreContainer {
+            transform: translateY(-100%);
+            opacity: 1;
+            transition: all 0.5s;
+        }
+    }
     section {
         display: flex;
         flex-direction: column;
@@ -38,11 +54,9 @@ import Layout from "../layouts/layout.astro";
                 height: 100%;
             }
         }
-
         @media screen and (max-width: 768px) {
             gap: 0.3em;
         }
-
         p {
             margin-top: 0.5em;
             width: 40%;
@@ -53,3 +67,19 @@ import Layout from "../layouts/layout.astro";
         }
     }
 </style>
+
+<script>
+    const toAnimate =
+        document.body.querySelectorAll<HTMLDivElement>(".animateIn");
+    setTimeout(() => {
+        let elementCount = 0;
+        for (const element of toAnimate) {
+            if (element) {
+                element.style.transitionDelay = `${200 * elementCount}ms`;
+                element.style.transform = "translateY(0)";
+                element.style.opacity = "1";
+            }
+            elementCount++;
+        }
+    }, 0);
+</script>
