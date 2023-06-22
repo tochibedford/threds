@@ -1,0 +1,58 @@
+---
+---
+
+<div class="container">
+    <div class="left">
+        <img src="assets/vectorStage1.png" />
+    </div>
+    <div class="right">
+        <article>
+            <h1>UPLOAD YOUR WARDROBE</h1>
+            <p>
+                Say goodbye to fashion confusion and hello to effortless style!
+                With ThredsAI, transforming your wardrobe starts with a simple
+                snap. Just upload a picture of yourself and your favorite
+                clothing items, and our AI technology will work its magic.
+            </p>
+        </article>
+    </div>
+</div>
+
+<style lang="scss" scoped>
+    .container {
+        border: 1px dashed red;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // width: 50%;
+            border: 1px dashed red;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            // width: 50%;
+            border: 1px dashed red;
+
+            article {
+                width: 70%;
+                text-align: justify;
+                font-weight: 275;
+                line-height: 38px;
+                p {
+                    font-size: 1.2em;
+                }
+                h1 {
+                    font-size: 2em;
+                    font-weight:bold;
+                    text-align: center;
+                }
+            }
+        }
+    }
+</style>
