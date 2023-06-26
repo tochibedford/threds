@@ -1,5 +1,8 @@
 ---
 import "../global.scss";
+import Footer from "../components/Footer.astro";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <html lang="en">
@@ -19,12 +22,13 @@ import "../global.scss";
     <main>
       <slot />
     </main>
+    {currentPath !== "/" ? <Footer /> : undefined}
   </body>
 </html>
 
 <style lang="scss">
   body {
-    height: 100dvh;
+    min-height: 100dvh;
     main {
       display: flex;
       flex-direction: column;
