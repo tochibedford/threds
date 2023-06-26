@@ -5,85 +5,84 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-    <Navbar />
-    <section>
-        <div class:list={["logoContainer", "animateIn"]}>
-            <img src="/assets/thredsLogo.png" alt="threds logo" />
-        </div>
-        <p>
-            Welcome to ThredsAI, the innovative online platform that empowers
-            you to reimagine your wardrobe like never before. With our
-            cutting-edge AI technology, you can breathe new life into your
-            existing clothing items and unlock endless outfit possibilities. Are
-            you ready to revolutionize your style effortlessly? Let's dive in!
-        </p>
-    </section>
-    <section>
-        <Card />
-    </section>
-    <section></section>
+  <Navbar />
+  <section>
+    <div class:list={["logoContainer", "animateIn"]}>
+      <img src="/assets/thredsLogo.png" alt="threds logo" />
+    </div>
+    <p>
+      Welcome to ThredsAI, the innovative online platform that empowers you to
+      reimagine your wardrobe like never before. With our cutting-edge AI
+      technology, you can breathe new life into your existing clothing items and
+      unlock endless outfit possibilities. Are you ready to revolutionize your
+      style effortlessly? Let's dive in!
+    </p>
+  </section>
+  <section>
+    <Card />
+  </section>
 </Layout>
 
 <style lang="scss">
-    nav {
-        display: flex;
-        justify-content: flex-end;
-        padding: 2em 3em;
-        font-size: 0.6em;
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2em 3em;
+    font-size: 0.6em;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    .learnMoreContainer {
+      transform: translateY(-100%);
+      opacity: 1;
+      transition: all 0.5s;
+    }
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    gap: 1em;
+    scroll-behavior: smooth;
+    color: var(--off-white);
+
+    .logoContainer {
+      margin-top: 4.25em;
+      width: 32em;
+      height: 10em;
+      img {
         width: 100%;
-        max-width: 1440px;
-        margin: 0 auto;
-
-        .learnMoreContainer {
-            transform: translateY(-100%);
-            opacity: 1;
-            transition: all 0.5s;
-        }
+        height: 100%;
+      }
     }
-    section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: auto;
-        gap: 1em;
-        scroll-behavior: smooth;
-        color: var(--off-white);
-
-        .logoContainer {
-            margin-top: 4.25em;
-            width: 32em;
-            height: 10em;
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
-        @media screen and (max-width: 768px) {
-            gap: 0.3em;
-        }
-        p {
-            margin-top: 0.5em;
-            width: 40%;
-            height: 288px;
-            text-align: center;
-            font-weight: 275;
-            line-height: 38px;
-        }
+    @media screen and (max-width: 768px) {
+      gap: 0.3em;
     }
+    p {
+      margin-top: 0.5em;
+      width: 40%;
+      height: 288px;
+      text-align: center;
+      font-weight: 275;
+      line-height: 38px;
+    }
+  }
 </style>
 
 <script>
-    const toAnimate =
-        document.body.querySelectorAll<HTMLDivElement>(".animateIn");
-    setTimeout(() => {
-        let elementCount = 0;
-        for (const element of toAnimate) {
-            if (element) {
-                element.style.transitionDelay = `${200 * elementCount}ms`;
-                element.style.transform = "translateY(0)";
-                element.style.opacity = "1";
-            }
-            elementCount++;
-        }
-    }, 0);
+  const toAnimate =
+    document.body.querySelectorAll<HTMLDivElement>(".animateIn");
+  setTimeout(() => {
+    let elementCount = 0;
+    for (const element of toAnimate) {
+      if (element) {
+        element.style.transitionDelay = `${200 * elementCount}ms`;
+        element.style.transform = "translateY(0)";
+        element.style.opacity = "1";
+      }
+      elementCount++;
+    }
+  }, 0);
 </script>
