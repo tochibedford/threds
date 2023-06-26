@@ -40,7 +40,6 @@ const { flipped, image, text, title } = Astro.props;
 
 <style lang="scss" scoped>
   .container {
-    border: 1px dashed red;
     display: grid;
     grid-template-columns: 1fr 1fr;
 
@@ -48,16 +47,12 @@ const { flipped, image, text, title } = Astro.props;
       display: flex;
       align-items: center;
       justify-content: center;
-      // width: 50%;
-      border: 1px dashed red;
     }
     .right {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      // width: 50%;
-      border: 1px dashed red;
 
       article {
         width: 70%;
