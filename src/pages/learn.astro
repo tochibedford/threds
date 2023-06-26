@@ -1,6 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
-import Card from "../components/card.astro";
+import Card from "../components/Card.astro";
 import Layout from "../layouts/layout.astro";
 ---
 
@@ -20,25 +20,28 @@ import Layout from "../layouts/layout.astro";
   </section>
   <section class="cardSection">
     <Card
-      title={"UPLOAD YOUR WARDROBE"}
+      title={"1. UPLOAD YOUR WARDROBE"}
       text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
       image={"assets/vectorStage1.png"}
     />
     <Card
       flipped={true}
-      title={"UPLOAD YOUR WARDROBE"}
-      text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
+      title={"2. Let AI Work Its Magic"}
+      text={"Watch in awe as our advanced algorithms analyze every detail of your outfit. From the elements and colors to the unique styles, ThredsAI understands your fashion preferences better than anyone else. Our AI-powered system curates stunning combinations you never thought possible, taking your style game to new heights."}
       image={"assets/vectorStage2.png"}
     />
     <Card
-      title={"UPLOAD YOUR WARDROBE"}
-      text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
+      title={"3. Mix and Match with Ease"}
+      text={"Now it's time to play dress-up! ThredsAI empowers you to become your own personal stylist. With the freedom to mix and match any clothing items, you can create endless outfit combinations that reflect your individuality. Whether you're experimenting with casual looks, professional attire, or standout party ensembles, the possibilities are limitless."}
       image={"assets/vectorStage3.png"}
     />
   </section>
 </Layout>
 
 <style lang="scss">
+  body {
+    height: 100%;
+  }
   nav {
     display: flex;
     justify-content: flex-end;
@@ -80,13 +83,14 @@ import Layout from "../layouts/layout.astro";
       width: 40%;
       height: 288px;
       text-align: center;
-      font-weight: 275;
+      font-weight: 200;
+      font-size: 1.2em;
       line-height: 38px;
     }
   }
 
   .cardSection {
-    gap: 10em;
+    gap: 2em;
   }
 </style>
 
