@@ -18,8 +18,23 @@ import Layout from "../layouts/layout.astro";
       style effortlessly? Let's dive in!
     </p>
   </section>
-  <section>
-    <Card />
+  <section class="cardSection">
+    <Card
+      title={"UPLOAD YOUR WARDROBE"}
+      text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
+      image={"assets/vectorStage1.png"}
+    />
+    <Card
+      flipped={true}
+      title={"UPLOAD YOUR WARDROBE"}
+      text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
+      image={"assets/vectorStage2.png"}
+    />
+    <Card
+      title={"UPLOAD YOUR WARDROBE"}
+      text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
+      image={"assets/vectorStage3.png"}
+    />
   </section>
 </Layout>
 
@@ -68,6 +83,10 @@ import Layout from "../layouts/layout.astro";
       font-weight: 275;
       line-height: 38px;
     }
+  }
+
+  .cardSection {
+    gap: 10em;
   }
 </style>
 
