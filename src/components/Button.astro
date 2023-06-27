@@ -24,12 +24,10 @@ if (href) {
     constructor() {
       super();
       const href = this.dataset.href;
-      console.log(href);
       const button = this.querySelector("button");
       if (button && href) {
         button.addEventListener("click", () => {
           window.location.href = href;
-          console.log("button clicked");
         });
       }
     }
