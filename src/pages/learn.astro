@@ -70,21 +70,30 @@ import Button from "../components/Button.astro";
 </Layout>
 
 <script>
+  import { lerp } from "../utilities";
+
   const arrowSvg = document.querySelector(".arrowSvg");
   const rectSvg = document.querySelector(".arrowSvg")?.querySelector("rect");
   const cardSection = document.querySelector(".cardSection");
+  let currentHeight = 11;
+
+  const scollListener = () => {
+    requestAnimationFrame(animateSvg);
+    window.removeEventListener("scroll", scollListener);
+  };
+
+  window.addEventListener("scroll", scollListener, { passive: true });
 
   function animateSvg() {
     if (cardSection && arrowSvg && rectSvg) {
       const cardSectionHeight = cardSection.getBoundingClientRect().height;
-      arrowSvg.setAttribute("height", `${cardSectionHeight - 100}`);
-      arrowSvg.setAttribute("viewBox", `0 0 3 ${cardSectionHeight - 100}`);
-      rectSvg.setAttribute("height", `${cardSectionHeight - 100}`);
+      currentHeight = lerp(currentHeight, cardSectionHeight, 0.01);
+      arrowSvg.setAttribute("height", `${currentHeight - 100}`);
+      arrowSvg.setAttribute("viewBox", `0 0 3 ${currentHeight - 100}`);
+      rectSvg.setAttribute("height", `${currentHeight - 100}`);
     }
     requestAnimationFrame(animateSvg);
   }
-
-  requestAnimationFrame(animateSvg);
 </script>
 
 <style lang="scss">
