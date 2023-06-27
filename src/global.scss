@@ -26,6 +26,14 @@ button {
 
   --primary-color-highlight: #395e73;
   --off-white-highlight: #d9d9d9;
+
+  --secondary-color: #be6dd9;
+  --secondary-color-light: #df9af6;
+}
+
+*::selection {
+  color: var(--primary-color);
+  background-color: var(--secondary-color-light);
 }
 
 body {
