@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar.astro";
 import Card from "../components/Card.astro";
 import Layout from "../layouts/layout.astro";
+import Button from "../components/Button.astro";
 ---
 
 <Layout>
@@ -19,6 +20,31 @@ import Layout from "../layouts/layout.astro";
     </p>
   </section>
   <section class="cardSection">
+    <div class="arrowGroup">
+      <svg
+        width="3"
+        height="11"
+        viewBox="0 0 3 11"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="arrowSvg"
+      >
+        <rect width="3" height="11" fill="#e7e7e7"></rect>
+      </svg>
+
+      <svg
+        width="24"
+        height="72"
+        viewBox="0 0 24 72"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.9393 71.0607C11.5251 71.6464 12.4749 71.6464 13.0607 71.0607L22.6066 61.5147C23.1924 60.9289 23.1924 59.9792 22.6066 59.3934C22.0208 58.8076 21.0711 58.8076 20.4853 59.3934L12 67.8787L3.51472 59.3934C2.92893 58.8076 1.97918 58.8076 1.3934 59.3934C0.807612 59.9792 0.807612 60.9289 1.3934 61.5147L10.9393 71.0607ZM10.5 0L10.5 70H13.5L13.5 0L10.5 0Z"
+          fill="#E7E7E7"></path>
+      </svg>
+    </div>
+
     <Card
       title={"1. UPLOAD YOUR WARDROBE"}
       text={"Say goodbye to fashion confusion and hello to effortless style! With ThredsAI, transforming your wardrobe starts with a simple snap. Just upload a picture of yourself and your favorite clothing items, and our AI technology will work its magic."}
@@ -36,7 +62,28 @@ import Layout from "../layouts/layout.astro";
       image={"assets/vectorStage3.png"}
     />
   </section>
+  <section>
+    <Button href="/" invert={true} text={"Join Wait List"} />
+  </section>
 </Layout>
+
+<script>
+  const arrowSvg = document.querySelector(".arrowSvg");
+  const rectSvg = document.querySelector(".arrowSvg")?.querySelector("rect");
+  const cardSection = document.querySelector(".cardSection");
+
+  function animateSvg() {
+    if (cardSection && arrowSvg && rectSvg) {
+      const cardSectionHeight = cardSection.getBoundingClientRect().height;
+      arrowSvg.setAttribute("height", `${cardSectionHeight - 100}`);
+      arrowSvg.setAttribute("viewBox", `0 0 3 ${cardSectionHeight - 100}`);
+      rectSvg.setAttribute("height", `${cardSectionHeight - 100}`);
+    }
+    requestAnimationFrame(animateSvg);
+  }
+
+  requestAnimationFrame(animateSvg);
+</script>
 
 <style lang="scss">
   body {
@@ -90,7 +137,20 @@ import Layout from "../layouts/layout.astro";
   }
 
   .cardSection {
+    position: relative;
     gap: 2em;
+    padding: 50px 0;
+
+    .arrowGroup {
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+
+      svg {
+        width: 100%;
+      }
+    }
   }
 </style>
 
