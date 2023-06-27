@@ -1,20 +1,45 @@
-<footer>Threds©2023</footer>
+<footer class="movableBackground">Threds©2023</footer>
+
+<script>
+  import { lerp } from "../utilities";
+  const movableBackgroundElement =
+    document.querySelector<HTMLDivElement>(".movableBackground");
+  const backgroundPosition = {
+    x: 0,
+  };
+  const mouse = {
+    x: 0,
+  };
+  function animate() {
+    backgroundPosition.x = lerp(backgroundPosition.x, mouse.x, 0.1);
+    if (movableBackgroundElement) {
+      movableBackgroundElement.style.backgroundPositionX = `${-backgroundPosition.x}px`;
+    }
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+  window.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX - window.innerWidth / 2;
+  });
+</script>
 
 <style lang="scss">
   footer {
-    height: 350px;
+    height: 400px;
     background: url("assets/footerBack.png");
+    background-position: 50% 0;
     display: grid;
     place-items: center;
-    color: var(--off-white);
+    color: var(--off-white-highlight);
     font-size: 1.8rem;
     font-weight: 600;
     -webkit-mask-image: -webkit-gradient(
       linear,
       left bottom,
       left top,
-      from(rgba(0, 0, 0, 1)),
-      to(rgba(0, 0, 0, 0))
+      from(rgba(0, 0, 0)),
+      to(rgba(1, 1, 1, 0))
     );
   }
 </style>
