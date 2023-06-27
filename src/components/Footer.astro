@@ -11,7 +11,7 @@
     x: 0,
   };
   function animate() {
-    backgroundPosition.x = lerp(backgroundPosition.x, mouse.x, 0.1);
+    backgroundPosition.x = lerp(backgroundPosition.x, mouse.x, 0.007);
     if (movableBackgroundElement) {
       movableBackgroundElement.style.backgroundPositionX = `${-backgroundPosition.x}px`;
     }
