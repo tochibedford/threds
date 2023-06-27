@@ -1,10 +1,39 @@
 ---
-const { text, invert } = Astro.props;
+interface Props {
+  text?: string;
+  invert?: boolean;
+  href?: string;
+  type?: string;
+}
+
+const { text, invert, href } = Astro.props;
+let link = false;
+
+if (href) {
+}
 ---
 
-<button class:list={[{ invert: invert }]}>
-  {text}
-</button>
+<button-link data-href={href}>
+  <button class:list={[{ invert: invert }]}>
+    {text}
+  </button>
+</button-link>
+
+<script>
+  class Button extends HTMLElement {
+    constructor() {
+      super();
+      const href = this.dataset.href;
+      const button = this.querySelector("button");
+      if (button && href) {
+        button.addEventListener("click", () => {
+          window.location.href = href;
+        });
+      }
+    }
+  }
+  customElements.define("button-link", Button);
+</script>
 
 <style lang="scss">
   .invert {
@@ -12,6 +41,10 @@ const { text, invert } = Astro.props;
     border: 1px solid var(--off-white);
     color: var(--off-white);
 
+    a {
+      padding-block: 15px;
+      background: red;
+    }
     @media screen and (max-width: 400px) {
       font-size: 1em;
       padding: 1em 2em;

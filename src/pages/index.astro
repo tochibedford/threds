@@ -4,45 +4,30 @@ import Button from "../components/Button.astro";
 import Navbar from "../components/Navbar.astro";
 import Form from "../components/Form.astro";
 const state = "open";
+import Layout from "../layouts/layout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.bunny.net" />
-    <link
-      href="https://fonts.bunny.net/css?family=poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-    <title>Astro</title>
-  </head>
-  <body>
-    <Navbar />
-    <main>
-      <section>
-        <h1>
-          <div class="altText">threds</div>
-          <div class:list={["logoContainer", "animateIn"]}>
-            <img src="/assets/thredsLogo.png" alt="threds logo" />
-          </div>
-        </h1>
+<Layout>
+  <Navbar />
+  <section>
+    <h1>
+      <div class="altText">threds</div>
+      <div class:list={["logoContainer", "animateIn"]}>
+        <img src="/assets/thredsLogo.png" alt="threds logo" />
+      </div>
+    </h1>
 
-        <div class:list={["formContainer", "animateIn"]}>
-          <Form />
-        </div>
+    <div class:list={["formContainer", "animateIn"]}>
+      <Form />
+    </div>
 
-        <p class:list={["animateIn", "heroText"]}>
-          Unlock Your Wardrobe's Full Potential with AI Magic!
-        </p>
-        <btn-container class:list={["joinWaitListContainer", "animateIn"]}>
-          <Button invert={false} text="Join wait list" />
-        </btn-container>
-      </section>
-    </main>
-  </body>
+    <p class:list={["animateIn", "heroText"]}>
+      Unlock Your Wardrobe's Full Potential with AI Magic!
+    </p>
+    <btn-container class:list={["joinWaitListContainer", "animateIn"]}>
+      <Button invert={false} text="Join wait list" />
+    </btn-container>
+  </section>
 
   <script>
     const form = document.querySelector<HTMLDivElement>(".formContainer");
@@ -51,7 +36,6 @@ const state = "open";
       document.querySelector<HTMLDivElement>(".logoContainer");
 
     class Button extends HTMLElement {
-      //define new Class Button
       constructor() {
         super();
         const joinButton = this.querySelector<HTMLButtonElement>("button");
@@ -65,13 +49,18 @@ const state = "open";
               heroText &&
               logoContainer
             ) {
-              joinButtonParent.style.transitionDelay = "0s";
               heroText.style.transitionDelay = "0s";
-              joinButtonParent.classList.add("hide");
               heroText.classList.add("hide");
-
               form.classList.add("show");
               logoContainer.style.width = "80%";
+
+              joinButtonParent.classList.add("hide");
+              joinButtonParent.style.transitionDelay = "0s";
+              joinButtonParent.style.transition = "all 0.5s";
+              setTimeout(() => {
+                joinButtonParent.style.maxHeight = "0";
+              }, 1000);
+              joinButtonParent.style.opacity = "0";
             }
           });
       }
@@ -94,107 +83,110 @@ const state = "open";
   </script>
 
   <style lang="scss">
-    body {
+    section {
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      scroll-behavior: smooth;
 
-      main {
-        flex-grow: 1;
-        section {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-          gap: 1em;
+      @media screen and (max-width: 768px) {
+        gap: 0.3em;
+      }
 
-          @media screen and (max-width: 768px) {
-            gap: 0.3em;
-          }
+      h1 {
+        position: relative;
+        overflow: hidden;
 
-          h1 {
-            position: relative;
-            overflow: hidden;
+        .altText {
+          position: absolute;
+          opacity: 0;
+        }
 
-            .altText {
-              position: absolute;
-              opacity: 0;
-            }
-
-            .logoContainer {
-              padding: 0.5em;
-              transform: translateY(-100%);
-              transition: all 0.5s;
-              width: 100%;
-              margin: 0 auto;
-              opacity: 0;
-              img {
-                width: 100%;
-                object-fit: contain;
-              }
-            }
-          }
-          p {
-            width: 60%;
-            text-align: center;
-            font-weight: 200;
-            font-size: 1.7em;
-            color: var(--off-white);
-            transition: all 0.5s;
-
-            transform: translateY(-100%);
-            opacity: 0;
-            overflow: hidden;
-            max-height: 200px;
-
-            &.hide {
-              transition-delay: 0;
-              max-height: 0;
-              opacity: 0;
-            }
-
-            @media screen and (max-width: 768px) {
-              font-size: 1.4em;
-            }
-            @media screen and (max-width: 640px) {
-              font-size: 1.2em;
-              width: 60%;
-            }
-
-            @media screen and (max-width: 400px) {
-              font-size: 1.1em;
-              width: 80%;
-            }
-          }
-
-          .joinWaitListContainer {
-            margin: 2em;
-            transition: all 0.5s;
-            transform: translateY(-100%);
-            overflow: hidden;
-            opacity: 0;
-            max-height: 200px;
-            &.hide {
-              transition-delay: 0;
-              max-height: 0;
-              opacity: 0;
-            }
-
-            @media screen and (max-width: 768px) {
-              margin: 3em;
-            }
-          }
-          .formContainer {
-            max-height: 0;
-            transition: all 0.5s;
-            overflow: hidden;
-
-            &.show {
-              max-height: 300px;
-            }
+        .logoContainer {
+          padding: 0.5em;
+          transform: translateY(-100%);
+          transition: all 0.5s;
+          width: 100%;
+          margin: 0 auto;
+          opacity: 0;
+          img {
+            width: 100%;
+            object-fit: contain;
           }
         }
       }
+      p {
+        width: 60%;
+        text-align: center;
+        font-weight: 200;
+        font-size: 1.7em;
+        color: var(--off-white);
+        transition: all 0.5s;
+
+        transform: translateY(-100%);
+        opacity: 0;
+        overflow: hidden;
+        max-height: 200px;
+
+        &.hide {
+          transition-delay: 0;
+          max-height: 0;
+          opacity: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: 1.4em;
+        }
+        @media screen and (max-width: 640px) {
+          font-size: 1.2em;
+          width: 60%;
+        }
+
+        @media screen and (max-width: 400px) {
+          font-size: 1.1em;
+          width: 80%;
+        }
+      }
+
+      .joinWaitListContainer {
+        margin: 2em;
+        transition: all 0.5s;
+        transform: translateY(-100%);
+        overflow: hidden;
+        opacity: 0;
+        max-height: 200px;
+
+        &.hide {
+          background-color: blue;
+          transition-delay: 0;
+          max-height: 0;
+          opacity: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+          margin: 3em;
+        }
+      }
+      .formContainer {
+        max-height: 0;
+        transition: all 0.5s;
+        overflow: hidden;
+
+        &.show {
+          max-height: 300px;
+        }
+      }
+    }
+
+    .section2 {
+      border: 1px solid red;
+      width: 100%;
+      p {
+        color: white;
+      }
     }
   </style>
-</html>
+</Layout>

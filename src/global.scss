@@ -8,6 +8,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  //for debugging overflow issues
+  // background-color: black !important;
+  // outline: red 1px solid;
 }
 
 button {
@@ -24,6 +28,14 @@ button {
 
   --primary-color-highlight: #395e73;
   --off-white-highlight: #d9d9d9;
+
+  --secondary-color: #be6dd9;
+  --secondary-color-light: #df9af6;
+}
+
+*::selection {
+  color: var(--primary-color);
+  background-color: var(--secondary-color-light);
 }
 
 body {
