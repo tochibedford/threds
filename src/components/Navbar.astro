@@ -1,10 +1,17 @@
 ---
 import Button from "./Button.astro";
+
+const isButtonDisabled = ["/learn"].includes(Astro.url.pathname);
 ---
 
 <nav>
   <div class:list={["learnMoreContainer", "animateIn"]}>
-    <Button href="learn" invert={true} text={"Learn more"} />
+    <Button
+      href="learn"
+      invert={true}
+      text={"Learn more"}
+      disabled={isButtonDisabled}
+    />
   </div>
 </nav>
 
