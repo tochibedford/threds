@@ -38,10 +38,29 @@ const { flipped, image, text, title } = Astro.props;
   }
 </div>
 
+<div class="container mobile">
+  <>
+    <div class="right">
+      <article>
+        <h1>{title}</h1>
+        <p>{text}</p>
+      </article>
+    </div>
+    <div class="left">
+      <img class="mobile-image" src={image} />
+    </div>
+  </>
+</div>
+
 <style lang="scss" scoped>
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 900px) {
+      grid-template-columns: auto;
+      display: none;
+    }
 
     .left {
       display: flex;
@@ -66,6 +85,52 @@ const { flipped, image, text, title } = Astro.props;
           font-size: 2.2em;
           font-weight: bold;
           text-align: left;
+        }
+      }
+    }
+  }
+
+  .mobile {
+    display: none;
+    overflow: hidden;
+    @media screen and (max-width: 900px) {
+      grid-template-columns: auto;
+      display: grid;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .mobile-image {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      article {
+        width: 70%;
+        @media screen and (max-width: 900px) {
+          width: 90%;
+          text-align: center;
+        }
+        text-align: justify;
+        font-weight: 275;
+        line-height: 38px;
+        background-color: var(--primary-color);
+        p {
+          font-size: clamp(0.8em, 3vw, 1.2em);
+        }
+        h1 {
+          font-size: clamp(2em, 6vw, 2.2em);
+          font-weight: bold;
+          text-align: center;
         }
       }
     }
