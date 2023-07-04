@@ -160,27 +160,33 @@ import Button from "../components/Button.astro";
     p {
       margin-top: 0.5em;
       width: 40%;
-      @media screen and (max-width: 1100px) {
-        width: 95%;
-        text-align: justify;
-      }
-      @media screen and (max-width: 600px) {
-        font-size: 4vw;
-      }
-
       height: 288px;
       text-align: center;
       font-weight: 200;
       font-size: 1.2em;
       line-height: 38px;
+      @media screen and (max-width: 1100px) {
+        width: 95%;
+        text-align: justify;
+      }
+      @media screen and (max-width: 600px) {
+        font-size: 4.5vw;
+        line-height: 1.7rem;
+        padding: 0.5em;
+      }
     }
   }
 
   .cardSection {
     position: relative;
     gap: 2em;
-    padding: 50px 0;
+    padding: 5em 0;
+    // background-color: red;
     z-index: 1;
+    @media screen and (max-width: 600px) {
+      padding: 5em 0.5em;
+      gap: 5em;
+    }
 
     .arrowGroup {
       position: absolute;
@@ -211,5 +217,3 @@ import Button from "../components/Button.astro";
     }
   }, 0);
 </script>
-
-
